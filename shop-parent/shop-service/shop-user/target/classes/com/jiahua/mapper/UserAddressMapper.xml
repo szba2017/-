@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiahua.mapper.UserAddressMapper">
+	
+	<!-- 添加一个收货地址 -->
+	<insert id="add">
+		 INSERT into 
+		 	easybuy_user_address(
+		 		userId,
+		 		address,
+		 		createTime,
+		 		isDefault,
+		 		remark
+		 	) 
+		 VALUES(
+		 	#{userId},
+		 	#{address},
+		 	#{createTime},
+		 	#{isDefault},
+		 	#{remark}
+		 ) 
+	</insert>
+
+	<!-- 根据ID查询出一条收货地址 -->
+	<select id="getUserAddressById" resultType="userAddress" >
+		select 
+			id,
+			userId,
+			address,
+			createTime,
+			isDefault,
+			remark 
+		from 
+			easybuy_user_address  
+		where id = #{addressId}
+	</select>
+	
+	<select id="queryUserAddressList" resultType="userAddress" >
+		select 
+			id,
+			userId,
+			address,
+			createTime,
+			isDefault,
+			remark
+		from 
+			easybuy_user_address  
+		where 1=1
+		
+		<if test="userId != null  and  userId != ''">
+			 and userId = #{userId}
+		</if>
+		<if test="address != null and address != ''">
+			 and address like concat('%',#{address},'%') 
+		</if>
+		<if test="sort == 'desc'">
+			order by createTime desc
+		</if>
+		<if test="sort  == 'asc'">
+			order by createTime asc
+		</if>
+	</select>
+	
+	<!-- 根据订单ID删除一条收货地址 -->
+	<delete id="deleteByAddressId">
+		delete from easybuy_user_address where id = #{addressId}
+	</delete>
+</mapper>

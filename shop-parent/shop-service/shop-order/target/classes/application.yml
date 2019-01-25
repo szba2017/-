@@ -1,0 +1,25 @@
+server:
+  port:  8300
+spring:
+  application:
+    name:  shop-order
+  datasource:
+    url:  jdbc:mysql://localhost:3306/easybuy?useUnicode=true&amp&characterEncoding=utf-8  
+    username:  root
+    password:  root
+    driver-class-name:  com.mysql.jdbc.Driver
+    jackson:
+        date-format: MM/dd/YYYY HH:mm:ss
+        time-zone: GMT+8
+mybatis:
+  type-aliases-package:  com.jiahua.entity    
+#配置分页插件pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:8010/eureka/
