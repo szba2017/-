@@ -10,7 +10,10 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients
+<<<<<<< HEAD
 @EnableHystrix
+=======
+>>>>>>> c755db79c49b1f64c240201b796a75c54c695633
 public class OrderApp {
 
 	public static void main(String[] args) {

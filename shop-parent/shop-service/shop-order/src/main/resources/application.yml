@@ -22,6 +22,7 @@ pagehelper:
 eureka:
   client:
     service-url:
+<<<<<<< HEAD
       defaultZone:  http://localhost:8010/eureka/
 #开启断路器      
 feign:  
@@ -34,3 +35,6 @@ hystrix:
       execution:  
        timeout:  
         enabled:  false      
+=======
+      defaultZone:  http://localhost:8010/eureka/
+>>>>>>> c755db79c49b1f64c240201b796a75c54c695633
