@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiahua.mapper.UserMapper">
+	
+	<!-- 添加 USER -->
+	<insert id="add"  parameterType="user">
+		INSERT into 
+		easybuy_user(loginName,userName,password,sex,identityCode,email,mobile)
+		values(
+		#{loginName},
+		#{userName},
+		#{password},
+		#{sex},
+		#{identityCode},
+		#{email},
+		#{mobile}
+		)
+	</insert>
+	
+	<!-- 修改用户 -->
+	<update id="update" parameterType="user">
+		UPDATE 
+		easybuy_user 
+		<set>
+			<if test="loginName != null and loginName != ''">
+				loginName=#{loginName},
+			</if>
+			<if test="userName != null  and  userName != ''">
+				userName = #{userName},
+			</if>
+			<if test="type != null and type != ''">
+				type=#{type},
+			</if>
+			<if test="sex !=null  and  sex != null">
+				sex=#{sex}, 
+			</if>
+			<if test="identityCode != null  and  identityCode != ''">
+				identityCode = #{identityCode}, 
+			</if>
+			<if test="email != null  and  email !=''">
+				email = #{email}, 
+			</if>
+			<if test="mobile != null  and mobile != ''">
+				mobile = #{mobile} 
+			</if>
+		</set> 
+		WHERE 
+		id = #{id}
+	</update>
+	
+	<!-- delete user by id -->
+	<delete id="deleteUserById" parameterType="int">
+		delete from easybuy_user where id = #{id}
+	</delete>
+	
+	<!-- 分页显示user -->
+	<select id="getUserList" resultType="user" parameterType="string">
+		select * from easybuy_user 
+		<where>
+			<if test="loginName !=null and loginName !='' ">
+				loginName like  concat('%',#{loginName},'%')
+			</if>
+		</where>
+	</select>
+	
+	<!-- get user -->
+	<select id="getUser" resultType="user">
+		select * from easybuy_user 
+		where 
+		loginName = #{loginName} 
+		and 
+		password = #{password}
+	</select>
+</mapper>

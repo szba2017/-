@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: shop-news-api
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.jiahua
+Build-Jdk: 1.7.0_01
+Built-By: Administrator
+Created-By: Maven Integration for Eclipse
+Implementation-URL: http://projects.spring.io/spring-boot/shop-parent/
+ shop-service-api/shop-news-api/
+

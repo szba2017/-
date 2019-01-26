@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiahua.mapper.OrderDetailMapper">
+ 	<!-- 添加订单详情  -->
+ 	<insert id="add">
+ 		insert into 
+ 			easybuy_order_detail(
+ 				orderId,
+ 				productId,
+ 				quantity,
+ 				cost
+ 			) 
+ 		values(
+ 			#{orderId},
+ 			#{productId},
+ 			#{quantity},
+ 			#{cost}
+ 		)
+ 	</insert>
+
+	<!-- 删除订单详情  -->
+	<delete id="deleteById">
+		delete from easybuy_order_detail where id = #{id}
+	</delete>
+
+	<!-- 根据ID获得  OrderDetail对象 -->
+	<select id="getOrderDetailById" resultType="orderDetail">
+		select orderId,productId,quantity,cost from easybuy_order_detail where id = #{id} 
+	</select>
+	
+	<!-- 根据订单ID查询出所有订单详情信息 -->
+	<select id="getOrderDetailList" resultType="orderDetail">
+		select 
+			id,
+			orderId,
+			productId,
+			quantity,
+			cost 
+		FROM 
+			easybuy_order_detail
+		where 
+			1=1
+		<if test="orderId != null  and  orderId != ''">
+			and orderId= #{orderId}
+		</if>	
+			 
+	</select>
+</mapper>
+
