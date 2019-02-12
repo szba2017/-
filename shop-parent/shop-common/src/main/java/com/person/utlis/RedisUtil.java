@@ -97,4 +97,8 @@ public class RedisUtil {
 			return false;
 		}
 	}
+	
+	public void testMethodGit(){
+		System.out.print(555);
+	}
 }
